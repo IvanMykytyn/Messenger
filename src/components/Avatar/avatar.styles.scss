@@ -1,0 +1,26 @@
+@import '../../utils/variables';
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  position: relative;
+
+  margin: 5px;
+  border-radius: 50%;
+
+  background-color: $gray;
+
+  &__person {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+  &__online {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+
+    width: 15px;
+    height: 15px;
+  }
+}

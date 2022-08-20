@@ -1,0 +1,73 @@
+@import '../../utils/variables';
+
+.contacts-container {
+}
+
+.search {
+  height: 175px;
+  background-color: $lightGray;
+  border: 1.5px solid $gray;
+
+  padding: 15px 30px 15px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__input {
+    position: relative;
+    &__icon {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+
+      // align center
+      top: 50%;
+      transform: translate(0, -50%);
+
+      margin-left: 20px;
+      opacity: 75%;
+
+      &-clear {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 20px;
+
+        width: 25px;
+        height: 25px;
+
+        cursor: pointer;
+        opacity: 55%;
+
+        &:hover {
+          scale: 1.05;
+          opacity: 0.75;
+        }
+      }
+    }
+    input {
+      font-size: 1rem;
+      color: $black;
+
+      height: 50px;
+      width: 100%;
+
+      padding-left: 50px;
+      padding-right: 40px;
+
+      border: 1px solid $gray;
+      border-radius: $input-radius;
+
+      &::placeholder {
+        font-family: inherit;
+        color: #8f8f8f;
+        font-size: 1rem;
+      }
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

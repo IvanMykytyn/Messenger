@@ -1,0 +1,41 @@
+@import '../../utils/variables';
+
+.contacts {
+  border-right: 1px solid $gray;
+
+  overflow-y: scroll;
+  // scrollbar-width: none;
+}
+
+// .contacts::-webkit-scrollbar {
+//   display: none;
+// }
+
+.contacts-header {
+  &__text {
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: #2eaec8;
+
+    padding: 40px 20px;
+  }
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+  column-gap: 10px;
+  align-items: center;
+
+  border-bottom: 1px solid $gray;
+
+  padding: 15px;
+
+  &__text-container {
+  }
+  &__last-message {
+    word-wrap: break-word;
+    width: 100%;
+    color: #909090;
+  }
+}
