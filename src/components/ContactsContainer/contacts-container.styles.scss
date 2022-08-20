@@ -1,6 +1,8 @@
 @import '../../utils/variables';
 
 .contacts-container {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .search {

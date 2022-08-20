@@ -10,10 +10,6 @@ html {
   font-size: 100%;
 }
 
-body {
-  min-height: 100vh;
-}
-
 button:disabled {
   cursor: not-allowed;
 }

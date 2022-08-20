@@ -3,13 +3,17 @@
 .contacts {
   border-right: 1px solid $gray;
 
+  height: 100%;
+
   overflow-y: scroll;
-  // scrollbar-width: none;
+
+  padding-bottom: 200px;
+  scrollbar-width: none;
 }
 
-// .contacts::-webkit-scrollbar {
-//   display: none;
-// }
+.contacts::-webkit-scrollbar {
+  display: none;
+}
 
 .contacts-header {
   &__text {
@@ -31,8 +35,6 @@
 
   padding: 15px;
 
-  &__text-container {
-  }
   &__last-message {
     word-wrap: break-word;
     width: 100%;

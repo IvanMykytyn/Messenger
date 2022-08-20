@@ -1,0 +1,16 @@
+.messaging-container {
+  padding: 20px 15px;
+  height: 100%;
+
+  overflow: hidden;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  scrollbar-width: none;
+}
+
+.messaging-container::-webkit-scrollbar {
+  display: none;
+}
