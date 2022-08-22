@@ -17,7 +17,7 @@
 
 .contacts-header {
   &__text {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 300;
     color: #2eaec8;
 
@@ -34,6 +34,15 @@
   border-bottom: 1px solid $gray;
 
   padding: 15px;
+
+  font-size: 1.1rem;
+
+  cursor: pointer;
+
+  &:hover{
+    scale: 1.01;
+    opacity: 0.8;
+  }
 
   &__last-message {
     word-wrap: break-word;
