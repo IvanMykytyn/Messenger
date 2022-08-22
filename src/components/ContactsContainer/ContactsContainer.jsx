@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './contacts-container.styles.scss'
-// import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // components
 import { Contacts, Avatar } from '../'
@@ -9,18 +9,20 @@ import { Contacts, Avatar } from '../'
 import loupe from '../../assets/icons/loupe.png'
 import reject from '../../assets/icons/reject.png'
 
-const ContactsContainer = () => {
-  // const { contacts } = useSelector((store) => store.chat)
+// actions
+import { setSearch } from '../../features/chat/chatSlice'
 
-  const [search, setSearch] = useState('')
+const ContactsContainer = () => {
+  const dispatch = useDispatch()
+  const { search } = useSelector((store) => store.chat)
 
   const handleSearch = (e) => {
-    setSearch(e.target.value)
-    // filterContact(contacts, search)
+    dispatch(setSearch(e.target.value))
   }
   const clearSearch = () => {
-    setSearch('')
+    dispatch(setSearch(''))
   }
+
   return (
     <div className="contacts-container">
       <div className="search">
@@ -38,12 +40,14 @@ const ContactsContainer = () => {
               placeholder="Search or start new chat"
             />
             {/* reject icon */}
-            <img
-              src={reject}
-              alt="reject-icon"
-              onClick={clearSearch}
-              className="search__input__icon-clear"
-            />
+            {search && (
+              <img
+                src={reject}
+                alt="reject-icon"
+                onClick={clearSearch}
+                className="search__input__icon-clear"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -53,9 +57,3 @@ const ContactsContainer = () => {
 }
 
 export default ContactsContainer
-
-// const filterContact = (contacts, search) => {
-//   return contacts.filter((item) => {
-//     return item.name.toString().toLowerCase().indexOf(search.toLowerCase()) > -1
-//   })
-// }

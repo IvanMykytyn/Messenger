@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './messaging-container.styles.scss'
 import { useSelector } from 'react-redux'
 
@@ -10,22 +10,39 @@ const MessagingContainer = () => {
     currentContact: { messages, img },
   } = useSelector((store) => store.chat)
 
+  // const myRef = useRef(null)
+
+  // const executeScroll = () => myRef.current.scrollIntoView()
+
+  // useEffect(() => {
+  //   executeScroll()
+  // }, [])
+
   return (
     <main className="messaging-container">
-      {messages &&
-        messages.length !== 0 &&
-        messages.map((item) => {
-          const { id, message, date, isYour } = item
-          return (
-            <Message
-              key={id}
-              text={message}
-              date={date}
-              isYour={isYour}
-              avatar={img}
-            />
-          )
-        })}
+      <div>
+        {messages &&
+          messages.length !== 0 &&
+          messages.map((item) => {
+            const { id, message, date, isYour } = item
+            const messageDate = new Date(date)
+            return (
+              <Message
+                key={id}
+                text={message}
+                date={
+                  date &&
+                  messageDate.toLocaleString('en-US', {
+                    dateStyle: 'short',
+                    timeStyle: 'short',
+                  })
+                }
+                isYour={isYour}
+                avatar={img}
+              />
+            )
+          })}
+      </div>
     </main>
   )
 }

@@ -46,6 +46,12 @@ const chatSlice = createSlice({
 
       updateLocalStorage(state.contacts)
     },
+    setSearch: (state, { payload }) => {
+      state.search = payload
+    },
+    clearSearch: (state) => {
+      state.search = initialState.search
+    },
   },
   extraReducers: {
     [sendMessage.pending]: (state) => {
@@ -62,15 +68,17 @@ const chatSlice = createSlice({
   },
 })
 
-export const { setCurrentContact, setMessage } = chatSlice.actions
+export const { setCurrentContact, setMessage, setSearch, clearSearch } =
+  chatSlice.actions
 
 export default chatSlice.reducer
 
 const createMessageObject = (message, isYour = false) => {
+  const date = new Date().toISOString()
   return {
     id: uuidv4(),
     message,
-    date: 'now',
+    date,
     isYour: isYour,
   }
 }
