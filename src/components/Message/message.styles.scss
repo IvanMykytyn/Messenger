@@ -6,7 +6,6 @@
   display: flex;
 
   font-family: 'Roboto', sans-serif;
-  
 }
 
 .your-message {
@@ -21,9 +20,11 @@
 
   &__date {
     font-size: 0.85rem;
-    padding-top: 5px;
+    padding-top: 10px;
 
     width: 100%;
+
+    color: $textColor;
 
     display: flex;
     justify-content: flex-end;
@@ -63,7 +64,11 @@
   &__date {
     font-size: 0.85rem;
     width: 100%;
-    padding-top: 5px;
+
+    padding-top: 10px;
+    padding-left: 10px;
+
+    color: $textColor;
   }
 
   &__text {
@@ -71,7 +76,7 @@
     padding: 14px 16px;
     background-color: rgb(60, 68, 84);
     color: $white;
-    
+
     border-radius: $input-radius;
 
     max-width: 40vw;

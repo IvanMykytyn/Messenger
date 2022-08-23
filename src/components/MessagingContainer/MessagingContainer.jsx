@@ -7,25 +7,28 @@ import { Message } from '../'
 
 const MessagingContainer = () => {
   const {
-    currentContact: { messages, img },
+    currentContact: { messages, img, id },
   } = useSelector((store) => store.chat)
 
-  // const myRef = useRef(null)
+  const messagesEndRef = useRef(null)
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView(true)
+  }
 
-  // const executeScroll = () => myRef.current.scrollIntoView()
-
-  // useEffect(() => {
-  //   executeScroll()
-  // }, [])
+  useEffect(() => {
+    scrollToBottom()
+  }, [id, messages])
 
   return (
     <main className="messaging-container">
-      <div>
+      <div className="messaging-outer">
+        <div ref={messagesEndRef}></div>
         {messages &&
           messages.length !== 0 &&
           messages.map((item) => {
             const { id, message, date, isYour } = item
             const messageDate = new Date(date)
+
             return (
               <Message
                 key={id}

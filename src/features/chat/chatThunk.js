@@ -9,7 +9,7 @@ export const sendMessageThunk = async ({ message, id }, thunkAPI) => {
 
     const response = await axios.get(`https://api.chucknorris.io/jokes/random`)
 
-    await timeout(2000)
+    await timeout(10000)
 
     thunkAPI.dispatch(setMessage({ message: response.data.value, id }))
 

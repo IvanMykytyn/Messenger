@@ -21,7 +21,7 @@ export const sendMessage = createAsyncThunk(
 const initialState = {
   isLoading: false,
   contacts: contacts,
-  currentContact: contacts[0],
+  currentContact: null,
   search: '',
 }
 
