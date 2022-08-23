@@ -1,20 +1,17 @@
 @import '../../utils/variables';
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  @include avatarSize();
+  
   position: relative;
-
   margin: 6px;
-  border-radius: 50%;
 
   background-color: $gray;
 
   &__person {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    @include avatarSize();
   }
+
   &__online {
     position: absolute;
     bottom: -4px;

@@ -1,4 +1,4 @@
-import defaultPopulation from '../populate.js'
+import defaultPopulation from '../populate'
 
 export const getContactsFromLocalStorage = () => {
   const contacts = localStorage.getItem('contacts')

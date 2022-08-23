@@ -1,5 +1,20 @@
 @import '../../utils/variables';
 
+@mixin dateParams {
+  font-size: 0.85rem;
+  width: 100%;
+  padding-top: 10px;
+}
+
+@mixin messageParams {
+  padding: 14px 16px;
+  border-radius: $input-radius;
+  max-width: 40vw;
+  @media (max-width: $mobile-screen) {
+    max-width: 70vw;
+  }
+}
+
 .message {
   padding: 20px 0;
   width: 100%;
@@ -19,10 +34,7 @@
   padding: 5px;
 
   &__date {
-    font-size: 0.85rem;
-    padding-top: 10px;
-
-    width: 100%;
+    @include dateParams();
 
     color: $textColor;
 
@@ -31,16 +43,11 @@
   }
 
   &__text {
+    @include messageParams();
     float: right;
-    padding: 14px 16px;
 
     background-color: rgb(215, 215, 215);
     color: $black;
-
-    border-radius: $input-radius;
-
-    // max-width: 400px;
-    max-width: 40vw;
 
     p {
       word-wrap: break-word;
@@ -62,24 +69,19 @@
   }
 
   &__date {
-    font-size: 0.85rem;
-    width: 100%;
+    @include dateParams();
 
-    padding-top: 10px;
     padding-left: 10px;
-
     color: $textColor;
   }
 
   &__text {
+    @include messageParams();
+
     display: inline-block;
-    padding: 14px 16px;
+
     background-color: rgb(60, 68, 84);
     color: $white;
-
-    border-radius: $input-radius;
-
-    max-width: 40vw;
 
     p {
       word-wrap: break-word;

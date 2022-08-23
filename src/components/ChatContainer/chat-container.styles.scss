@@ -26,10 +26,16 @@
     font-size: 1.75rem;
     font-weight: 400;
     text-transform: capitalize;
+
+    white-space: nowrap;
+    @media screen and (max-width: $mobile-screen) {
+      font-size: 1.4rem;
+    }
   }
 }
 
 .chat-footer {
+  position: relative;
   min-height: 120px;
   background-color: $lightGray;
 
@@ -68,17 +74,17 @@
       }
     }
   }
-  button{
+  button {
     position: absolute;
     right: 25px;
     top: 50%;
     transform: translate(0, -50%);
-    
+
     padding-top: 4px;
     border: none;
     background-color: inherit;
   }
-  
+
   &__icon {
     width: 24px;
     height: 24px;
@@ -93,9 +99,7 @@
 
 .start-chat {
   &__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include centerDiv();
   }
 
   &__text {
@@ -112,5 +116,25 @@
     // padding: 12px 10px
     // avatar has 50px height and 6px margin
     height: calc(50px + 12px + 24px);
+  }
+}
+
+.return-button {
+  display: none;
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+
+  img {
+    @include alignVertically();
+    right: 25px;
+
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: $tablet-screen) {
+    display: block;
   }
 }

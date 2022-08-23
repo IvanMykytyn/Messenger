@@ -19,21 +19,15 @@
   &__input {
     position: relative;
     &__icon {
-      position: absolute;
+      @include alignVertically();
       width: 15px;
       height: 15px;
-
-      // align center
-      top: 50%;
-      transform: translate(0, -50%);
 
       margin-left: 20px;
       opacity: 75%;
 
       &-clear {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
+        @include alignVertically();
         right: 20px;
 
         width: 25px;

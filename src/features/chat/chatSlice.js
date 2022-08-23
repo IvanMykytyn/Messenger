@@ -23,6 +23,7 @@ const initialState = {
   contacts: contacts,
   currentContact: null,
   search: '',
+  isOpenContacts: true,
 }
 
 const chatSlice = createSlice({
@@ -52,6 +53,9 @@ const chatSlice = createSlice({
     clearSearch: (state) => {
       state.search = initialState.search
     },
+    setContactsBar: (state, { payload }) => {
+      state.isOpenContacts = payload
+    },
   },
   extraReducers: {
     [sendMessage.pending]: (state) => {
@@ -68,8 +72,13 @@ const chatSlice = createSlice({
   },
 })
 
-export const { setCurrentContact, setMessage, setSearch, clearSearch } =
-  chatSlice.actions
+export const {
+  setCurrentContact,
+  setMessage,
+  setSearch,
+  clearSearch,
+  setContactsBar,
+} = chatSlice.actions
 
 export default chatSlice.reducer
 

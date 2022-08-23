@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
-import './contacts-container.styles.scss'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import './contacts-container.styles.scss'
 
 // components
 import { Contacts, Avatar } from '../'
 
 // icons
-import loupe from '../../assets/icons/loupe.png'
-import reject from '../../assets/icons/reject.png'
+import { loupe, reject } from '../../assets/icons'
 
 // actions
 import { setSearch } from '../../features/chat/chatSlice'
 
 const ContactsContainer = () => {
   const dispatch = useDispatch()
+  // global store
   const { search } = useSelector((store) => store.chat)
+
 
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value))
   }
+  
   const clearSearch = () => {
     dispatch(setSearch(''))
   }

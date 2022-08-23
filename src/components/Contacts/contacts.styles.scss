@@ -51,21 +51,27 @@
     font-size: 1.25rem;
     font-weight: 400;
     text-transform: capitalize;
-    // font-family: 'Roboto', sans-serif;
   }
 
   &__last-message {
     word-wrap: break-word;
     width: 100%;
     color: #909090;
+
+    @media screen and (max-width: $small-mobile-screen) {
+      display: none;
+    }
   }
 
   &__date {
     font-size: 0.95rem;
     display: flex;
 
-    height: 70%;
     justify-content: flex-start;
-    // align-items: flex-start;
+
+    @media screen and (max-width: $small-mobile-screen) {
+      height: 100%;
+      @include centerDiv();
+    }
   }
 }

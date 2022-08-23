@@ -1,10 +1,10 @@
 // {
-//     id:
-//     name:
-//     img:
+//     id: uuidv4()
+//     name: 
+//     img: 
 //     messages: [{
 //         id: uuidv4(),
-//         date:
+//         date: ISO 8601 (UTC)
 //     }]
 // }
 
@@ -20,7 +20,7 @@ import {
   alice,
   josefina,
   velazquez,
-} from './assets/contacts/index.js'
+} from './assets/contacts/index'
 
 import { v4 as uuidv4 } from 'uuid'
 

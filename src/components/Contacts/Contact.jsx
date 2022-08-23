@@ -5,7 +5,11 @@ import { useDispatch } from 'react-redux'
 import { Avatar } from '../'
 
 // actions
-import { setCurrentContact, clearSearch } from '../../features/chat/chatSlice'
+import {
+  setCurrentContact,
+  clearSearch,
+  setContactsBar,
+} from '../../features/chat/chatSlice'
 
 const Contact = ({ id, avatar, name, lastMessage, date }) => {
   const dispatch = useDispatch()
@@ -16,15 +20,16 @@ const Contact = ({ id, avatar, name, lastMessage, date }) => {
       onClick={() => {
         dispatch(clearSearch())
         dispatch(setCurrentContact(id))
+        dispatch(setContactsBar(false))
       }}
     >
       <div>
-        <Avatar icon={avatar && avatar} online={true} />
+        <Avatar icon={avatar} online={true} />
       </div>
       <div className="contact__text-container">
         <h3 className="contact__name">{name}</h3>
         <p className="contact__last-message">
-          {lastMessage && truncate(lastMessage, 80)}
+          {lastMessage && truncate(lastMessage, 70)}
         </p>
       </div>
       <div className="contact__date">

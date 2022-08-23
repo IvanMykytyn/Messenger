@@ -1,4 +1,22 @@
+@import '../../utils/variables';
+
 .chats {
   display: grid;
   grid-template-columns: minmax(0, 37.5%) minmax(0, 62.5%);
+
+  @media screen and (max-width: $medium-screen) {
+    grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+  }
+
+  @media screen and (max-width: $tablet-screen) {
+    grid-template-columns: minmax(0, 0) minmax(0, 100%);
+  }
+
+
+  &-open {
+    @media screen and (max-width: $tablet-screen) {
+      grid-template-columns: minmax(0, 100%) minmax(0, 0);
+    }
+  }
+  
 }
