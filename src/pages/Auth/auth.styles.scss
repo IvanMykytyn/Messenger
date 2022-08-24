@@ -1,0 +1,30 @@
+@import '../../utils/variables';
+
+.auth {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 350px;
+    height: 200px;
+
+    background-color: $lightGray;
+    border: 1px solid $gray;
+
+    padding: 25px;
+
+    border-radius: $border-radius;
+  }
+  h2 {
+    text-align: center;
+  }
+  &__sign-in {
+    scale: 1.5;
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+  }
+}

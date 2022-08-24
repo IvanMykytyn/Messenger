@@ -67,3 +67,38 @@
     }
   }
 }
+
+.user-information {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  &__sign-out {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    @media screen and (max-width: $mobile-screen) {
+      padding: 0 2px;
+    }
+    button {
+      
+      cursor: pointer;
+      border: 1px solid $gray;
+
+      border-radius: 1rem;
+
+      padding: 8px 12px;
+
+      
+    }
+  }
+}

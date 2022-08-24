@@ -10,17 +10,18 @@ import { loupe, reject } from '../../assets/icons'
 
 // actions
 import { setSearch } from '../../features/chat/chatSlice'
+import { setUserObject } from '../../features/user/userSlice'
 
 const ContactsContainer = () => {
   const dispatch = useDispatch()
   // global store
   const { search } = useSelector((store) => store.chat)
-
+  const { user } = useSelector((store) => store.user)
 
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value))
   }
-  
+
   const clearSearch = () => {
     dispatch(setSearch(''))
   }
@@ -28,7 +29,17 @@ const ContactsContainer = () => {
   return (
     <div className="contacts-container">
       <div className="search">
-        <Avatar online={true} />
+        <div className="user-information__container">
+          <div className="user-information">
+            <Avatar online={true} icon={user?.img} />
+            <h3 className="contact__name">{user?.name}</h3>
+          </div>
+          <div className="user-information__sign-out">
+            <button type="button" onClick={() => dispatch(setUserObject(null))}>
+              Sign Out
+            </button>
+          </div>
+        </div>
         <div className="search__container">
           <div className="search__input">
             {/* loupe icon */}
