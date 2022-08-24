@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 // data
@@ -9,6 +8,9 @@ import {
 
 // thunk
 import { sendMessageThunk } from './chatThunk'
+
+// utils
+import createMessageObject from '../../utils/createMessage'
 
 // get data from local storage
 const contacts = getContactsFromLocalStorage()
@@ -37,22 +39,27 @@ const chatSlice = createSlice({
       const { message, id, isYour } = payload
       const index = state.contacts.map((item) => item.id).indexOf(id)
 
+      // add message to array
       state.contacts[index].messages.unshift(
         createMessageObject(message, isYour)
       )
 
+      // change the current contact messages array
       if (state.currentContact.id === state.contacts[index].id) {
         state.currentContact.messages = state.contacts[index].messages
       }
 
+      // update local storage
       updateLocalStorage(state.contacts)
     },
     setSearch: (state, { payload }) => {
       state.search = payload
     },
+
     clearSearch: (state) => {
       state.search = initialState.search
     },
+
     setContactsBar: (state, { payload }) => {
       state.isOpenContacts = payload
     },
@@ -61,9 +68,8 @@ const chatSlice = createSlice({
     [sendMessage.pending]: (state) => {
       state.isLoading = true
     },
-    [sendMessage.fulfilled]: (state, { payload }) => {
+    [sendMessage.fulfilled]: (state) => {
       state.isLoading = false
-      console.log(payload)
     },
     [sendMessage.rejected]: (state, { payload }) => {
       state.isLoading = false
@@ -81,13 +87,3 @@ export const {
 } = chatSlice.actions
 
 export default chatSlice.reducer
-
-const createMessageObject = (message, isYour = false) => {
-  const date = new Date().toISOString()
-  return {
-    id: uuidv4(),
-    message,
-    date,
-    isYour: isYour,
-  }
-}

@@ -28,9 +28,7 @@ const Contact = ({ id, avatar, name, lastMessage, date }) => {
       </div>
       <div className="contact__text-container">
         <h3 className="contact__name">{name}</h3>
-        <p className="contact__last-message">
-          {lastMessage && truncate(lastMessage, 70)}
-        </p>
+        <p className="contact__last-message">{lastMessage}</p>
       </div>
       <div className="contact__date">
         <p>{date ? date : ''}</p>
@@ -40,7 +38,3 @@ const Contact = ({ id, avatar, name, lastMessage, date }) => {
 }
 
 export default Contact
-
-function truncate(str, maxlength) {
-  return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str
-}

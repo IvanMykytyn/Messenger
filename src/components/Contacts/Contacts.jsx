@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import './contacts.styles.scss'
 
@@ -8,22 +8,35 @@ import Contact from './Contact'
 // utils
 import { sortByLastMessage, filterContacts } from '../../utils/contacts'
 
+// custom hooks
+import useViewport from '../../utils/useViewport'
+
 const Contacts = () => {
   // global store
   const { contacts, search } = useSelector((store) => store.chat)
+  const { width } = useViewport()
 
   // sort all contacts by last message
-  const sortedContacts = sortByLastMessage(contacts)
+  const sortedContacts = useMemo(() => {
+    return sortByLastMessage(contacts)
+  }, [contacts])
 
   // then filter them by search
-  const filteredContacts = filterContacts(sortedContacts, search)
+  const filteredContacts = useMemo(() => {
+    return filterContacts(sortedContacts, search)
+  }, [sortedContacts, search])
+
+  // cut last message depend on screen size
+  let maxLastMessageLength = 70
+  if (width < 550) {
+    maxLastMessageLength = 30
+  }
 
   return (
     <div className="contacts">
       <header>
         <h2 className="contacts-header__text">Chats</h2>
       </header>
-
       {filteredContacts &&
         filteredContacts.map((contact) => {
           // get data from the current contact
@@ -50,7 +63,9 @@ const Contacts = () => {
               key={id}
               id={id}
               name={name}
-              lastMessage={lastMessage}
+              lastMessage={
+                lastMessage && truncate(lastMessage, maxLastMessageLength)
+              }
               date={lastMessageDate && messageDate}
               avatar={img}
             />
@@ -61,3 +76,7 @@ const Contacts = () => {
 }
 
 export default Contacts
+
+function truncate(str, maxlength) {
+  return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str
+}

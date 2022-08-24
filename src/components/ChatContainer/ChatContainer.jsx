@@ -16,7 +16,6 @@ const ChatContainer = () => {
 
   // global store
   const { currentContact } = useSelector((store) => store.chat)
-
   // local state
   const [message, setMessage] = useState('')
 
