@@ -1,7 +1,5 @@
 # Messenger
 
-### This is a test task solution from Reenbit.
-
 Project in Action - [Messenger](https://your-chat-chucknorris.netlify.app/)
 
 ### The challenge
